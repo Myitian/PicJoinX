@@ -1,21 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
+﻿using System.Diagnostics;
 using System.Drawing.Imaging;
-using System.IO;
-using System.Windows.Forms;
 
-namespace PicJoin
+namespace PicJoinX
 {
     public partial class MainForm : Form
     {
-        int pic_sizeX = 512, pic_sizeY = 512;
-        ImageList imageList = new ImageList();
-        Image imageResult = null;
-        List<Image> picList = new List<Image>();
+        private readonly OpenFileDialog OFD = new()
+        {
+            Filter = "PNG图片|*.png|BMP图片|*.bmp|JPEG图片|*.jpg,*.jpeg|TIFF图片|*.tif,*.tiff|GIF图片|*.gif|任意文件|*.*",
+        };
+        private readonly SaveFileDialog SFD = new()
+        {
+            Filter = "PNG图片|*.png|BMP图片|*.bmp|JPEG图片|*.jpg,*.jpeg|TIFF图片|*.tif,*.tiff|GIF图片|*.gif",
+            AddExtension = true,
+            DefaultExt = "png"
+        };
 
-        private void Success(string msg)
+        private const int defaultPicX = 512, defaultPicY = 512;
+        private readonly ImageList imageList = new();
+        private readonly List<Image> picList = new();
+
+        private void Success(string msg = "")
         {
             LABEL_Msg.ForeColor = Color.Green;
             LABEL_Msg.Text = msg;
@@ -29,80 +34,43 @@ namespace PicJoin
         /// <summary>
         /// 获取画布大小
         /// </summary>
-        private void GetPicSize()
+        private Size? GetPicSize()
         {
             try
             {
-                pic_sizeX = Convert.ToInt32(TEXTBOX_SizeX.Text);
-                pic_sizeY = Convert.ToInt32(TEXTBOX_SizeY.Text);
-                Success("");
+                Size size = new(Convert.ToInt32(NUD_SizeX.Value), Convert.ToInt32(NUD_SizeY.Value));
+                Success();
+                return size;
             }
             catch (Exception ex)
             {
                 Error(ex.Message + Environment.NewLine + ex.StackTrace);
-                TEXTBOX_SizeX.Text = pic_sizeX.ToString();
-                TEXTBOX_SizeY.Text = pic_sizeY.ToString();
+                return null;
             }
         }
 
-        public MainForm()
+        private Image? GenerateImage()
         {
-            InitializeComponent();
-        }
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            TEXTBOX_SizeX.Text = pic_sizeX.ToString();
-            TEXTBOX_SizeY.Text = pic_sizeY.ToString();
-        }
-
-        private void BTN_Add_Click(object sender, EventArgs e)
-        {
-            string picNames = string.Empty;
-            if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
+            Size? size = GetPicSize();
+            if (size.HasValue)
             {
-                LISTVIEW_SrcPicList.LargeImageList = imageList;
-                foreach (string fileName in OpenFileDialog1.FileNames)
-                {
-                    picNames += fileName + Environment.NewLine;
-                    Image image = Image.FromFile(fileName);
-                    Size isize = image.Size;
-                    imageList.ImageSize = new Size(64, 64);
-                    imageList.Images.Add(image);
-                    picList.Add(image);
-                    ListViewItem myitem = new ListViewItem(Path.GetFileName(fileName))
-                    {
-                        ImageIndex = imageList.Images.Count - 1
-                    };
-                    LISTVIEW_SrcPicList.Items.Add(myitem);
-                }
+                pictureBox1.Size = size.Value;
+                Image? imageResult = JoinImage(picList, size.Value.Width, size.Value.Height);
+                pictureBox1.Image = imageResult;
+                Success();
+                return imageResult;
             }
-        }
-
-        private void BTN_Clr_Click(object sender, EventArgs e)
-        {
-            imageList.Images.Clear();
-            LISTVIEW_SrcPicList.Items.Clear();
-            picList.Clear();
-            Success("");
-        }
-
-        private void BTN_Preview_Click(object sender, EventArgs e)
-        {
-            GetPicSize();
-            pictureBox1.Size = new Size(pic_sizeX, pic_sizeY);
-            imageResult = JoinImage(picList, pic_sizeX, pic_sizeY);
-            pictureBox1.Image = imageResult;
-            Success("");
+            return null;
         }
 
 
-        private Image JoinImage(List<Image> imageList, int maxX, int maxY, bool closest=false)
+        private Image? JoinImage(List<Image> imageList, int maxX, int maxY)
         {
             //图片列表
             if (imageList.Count <= 0)
                 return null;
             //构造最终的图片白板
-            Bitmap tableChartImage = new Bitmap(maxX, maxY);
+            Bitmap tableChartImage = new(maxX, maxY, PixelFormat.Format32bppArgb);
             try
             {
                 Graphics graph = Graphics.FromImage(tableChartImage);
@@ -114,30 +82,27 @@ namespace PicJoin
                 int maxHeightLine = 0;//一行中最大高度
                 foreach (Image i in imageList)
                 {
-                    if (maxHeightLine < i.Height)
-                    {
-                        maxHeightLine = i.Height;
-                    }
                     if (currentWidth + i.Width > maxX)
                     {
                         currentWidth = 0;
                         currentHeight += maxHeightLine;
-                        if (currentHeight > maxY)
-                        {
-                            break;
-                        }
+                        maxHeightLine = 0;
                     }
-                    if (currentHeight + maxHeightLine > maxY)
+                    if (currentHeight + i.Height > maxY)
                     {
                         break;
                     }
 
                     //拼图
-                    graph.DrawImage(i, currentWidth, currentHeight);
+                    graph.DrawImage(i, currentWidth, currentHeight, i.Width, i.Height);
+                    if (maxHeightLine < i.Height)
+                    {
+                        maxHeightLine = i.Height;
+                    }
                     //拼接改图后，当前宽度
                     currentWidth += i.Width;
                 }
-                Success("");
+                Success();
             }
             catch (Exception ex)
             {
@@ -146,9 +111,57 @@ namespace PicJoin
             return tableChartImage;
         }
 
+        public MainForm()
+        {
+            InitializeComponent();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            NUD_SizeX.Value = defaultPicX;
+            NUD_SizeY.Value = defaultPicY;
+        }
+
+        private void BTN_Add_Click(object sender, EventArgs e)
+        {
+            string picNames = string.Empty;
+            if (OFD.ShowDialog() == DialogResult.OK)
+            {
+                LISTVIEW_SrcPicList.LargeImageList = imageList;
+                foreach (string fileName in OFD.FileNames)
+                {
+                    picNames += fileName + Environment.NewLine;
+                    Image image = Image.FromFile(fileName);
+                    Size imgSize = image.Size;
+                    imageList.ImageSize = new Size(64, 64);
+                    imageList.Images.Add(image);
+                    picList.Add(image);
+                    ListViewItem lvi = new(Path.GetFileName(fileName))
+                    {
+                        ImageIndex = imageList.Images.Count - 1
+                    };
+                    LISTVIEW_SrcPicList.Items.Add(lvi);
+                }
+            }
+        }
+
+        private void BTN_Clr_Click(object sender, EventArgs e)
+        {
+            imageList.Images.Clear();
+            LISTVIEW_SrcPicList.Items.Clear();
+            picList.Clear();
+            Success();
+        }
+
+        private void BTN_Preview_Click(object sender, EventArgs e)
+        {
+            GenerateImage();
+        }
+
         private void LINKLABEL_Inf_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start((sender as LinkLabel).Text);
+            if (sender is LinkLabel ll)
+                Process.Start(new ProcessStartInfo(ll.Text) { UseShellExecute = true });
         }
 
         private void TEXTBOX_SizeX_Leave(object sender, EventArgs e)
@@ -158,15 +171,20 @@ namespace PicJoin
 
         private void BTN_Save_Click(object sender, EventArgs e)
         {
-            BTN_Preview_Click(sender, e);
-            SaveFileDialog1.Filter = "PNG图片(*.png)|*.png";
-            SaveFileDialog1.AddExtension = true;
-            SaveFileDialog1.DefaultExt = "png";
-            if (SaveFileDialog1.ShowDialog() == DialogResult.OK)
+            Image? imageResult = GenerateImage();
+            if (SFD.ShowDialog() == DialogResult.OK)
             {
-                imageResult.Save(SaveFileDialog1.FileName, ImageFormat.Png);
+                ImageFormat imageFormat = SFD.FilterIndex switch
+                {
+                    1 => ImageFormat.Bmp,
+                    2 => ImageFormat.Jpeg,
+                    3 => ImageFormat.Tiff,
+                    4 => ImageFormat.Gif,
+                    _ => ImageFormat.Png,
+                };
+                imageResult?.Save(SFD.FileName, imageFormat);
+                Success($"保存成功！保存至{SFD.FileName}");
             }
-            Success($"保存成功！保存至{SaveFileDialog1.FileName}");
         }
 
     }

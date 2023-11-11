@@ -1,4 +1,4 @@
-﻿namespace PicJoin
+﻿namespace PicJoinX
 {
     partial class MainForm
     {
@@ -28,266 +28,272 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.GROUPBOX_Setting = new System.Windows.Forms.GroupBox();
-            this.LABEL_Msg = new System.Windows.Forms.Label();
-            this.LINKLABEL_Inf = new System.Windows.Forms.LinkLabel();
-            this.LABEL_Inf = new System.Windows.Forms.Label();
-            this.BTN_Preview = new System.Windows.Forms.Button();
-            this.BTN_Save = new System.Windows.Forms.Button();
-            this.TEXTBOX_SizeY = new System.Windows.Forms.TextBox();
-            this.LABEL_X = new System.Windows.Forms.Label();
-            this.LABEL_Size = new System.Windows.Forms.Label();
-            this.TEXTBOX_SizeX = new System.Windows.Forms.TextBox();
-            this.GROUPBOX_SrcPic = new System.Windows.Forms.GroupBox();
-            this.BTN_Clr = new System.Windows.Forms.Button();
-            this.BTN_Del = new System.Windows.Forms.Button();
-            this.BTN_Add = new System.Windows.Forms.Button();
-            this.LISTVIEW_SrcPicList = new System.Windows.Forms.ListView();
-            this.GROUPBOX_Preview = new System.Windows.Forms.GroupBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.OpenFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.SaveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.GROUPBOX_Setting.SuspendLayout();
-            this.GROUPBOX_SrcPic.SuspendLayout();
-            this.GROUPBOX_Preview.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+            GROUPBOX_Setting = new GroupBox();
+            NUD_SizeY = new NumericUpDown();
+            NUD_SizeX = new NumericUpDown();
+            LABEL_Msg = new Label();
+            LINKLABEL_Inf = new LinkLabel();
+            LABEL_Inf = new Label();
+            BTN_Preview = new Button();
+            BTN_Save = new Button();
+            LABEL_X = new Label();
+            LABEL_Size = new Label();
+            GROUPBOX_SrcPic = new GroupBox();
+            BTN_Clr = new Button();
+            BTN_Del = new Button();
+            BTN_Add = new Button();
+            LISTVIEW_SrcPicList = new ListView();
+            GROUPBOX_Preview = new GroupBox();
+            panel1 = new Panel();
+            pictureBox1 = new PictureBox();
+            GROUPBOX_Setting.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)NUD_SizeY).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NUD_SizeX).BeginInit();
+            GROUPBOX_SrcPic.SuspendLayout();
+            GROUPBOX_Preview.SuspendLayout();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // GROUPBOX_Setting
             // 
-            this.GROUPBOX_Setting.Controls.Add(this.LABEL_Msg);
-            this.GROUPBOX_Setting.Controls.Add(this.LINKLABEL_Inf);
-            this.GROUPBOX_Setting.Controls.Add(this.LABEL_Inf);
-            this.GROUPBOX_Setting.Controls.Add(this.BTN_Preview);
-            this.GROUPBOX_Setting.Controls.Add(this.BTN_Save);
-            this.GROUPBOX_Setting.Controls.Add(this.TEXTBOX_SizeY);
-            this.GROUPBOX_Setting.Controls.Add(this.LABEL_X);
-            this.GROUPBOX_Setting.Controls.Add(this.LABEL_Size);
-            this.GROUPBOX_Setting.Controls.Add(this.TEXTBOX_SizeX);
-            this.GROUPBOX_Setting.Dock = System.Windows.Forms.DockStyle.Right;
-            this.GROUPBOX_Setting.Location = new System.Drawing.Point(721, 0);
-            this.GROUPBOX_Setting.Name = "GROUPBOX_Setting";
-            this.GROUPBOX_Setting.Size = new System.Drawing.Size(177, 410);
-            this.GROUPBOX_Setting.TabIndex = 7;
-            this.GROUPBOX_Setting.TabStop = false;
-            this.GROUPBOX_Setting.Text = "参数设置";
+            GROUPBOX_Setting.Controls.Add(NUD_SizeY);
+            GROUPBOX_Setting.Controls.Add(NUD_SizeX);
+            GROUPBOX_Setting.Controls.Add(LABEL_Msg);
+            GROUPBOX_Setting.Controls.Add(LINKLABEL_Inf);
+            GROUPBOX_Setting.Controls.Add(LABEL_Inf);
+            GROUPBOX_Setting.Controls.Add(BTN_Preview);
+            GROUPBOX_Setting.Controls.Add(BTN_Save);
+            GROUPBOX_Setting.Controls.Add(LABEL_X);
+            GROUPBOX_Setting.Controls.Add(LABEL_Size);
+            GROUPBOX_Setting.Dock = DockStyle.Right;
+            GROUPBOX_Setting.Location = new Point(842, 0);
+            GROUPBOX_Setting.Margin = new Padding(4);
+            GROUPBOX_Setting.Name = "GROUPBOX_Setting";
+            GROUPBOX_Setting.Padding = new Padding(4);
+            GROUPBOX_Setting.Size = new Size(206, 581);
+            GROUPBOX_Setting.TabIndex = 7;
+            GROUPBOX_Setting.TabStop = false;
+            GROUPBOX_Setting.Text = "参数设置";
+            // 
+            // NUD_SizeY
+            // 
+            NUD_SizeY.Location = new Point(141, 28);
+            NUD_SizeY.Maximum = new decimal(new int[] { 65535, 0, 0, 0 });
+            NUD_SizeY.Name = "NUD_SizeY";
+            NUD_SizeY.Size = new Size(58, 23);
+            NUD_SizeY.TabIndex = 18;
+            // 
+            // NUD_SizeX
+            // 
+            NUD_SizeX.Location = new Point(63, 28);
+            NUD_SizeX.Maximum = new decimal(new int[] { 65535, 0, 0, 0 });
+            NUD_SizeX.Name = "NUD_SizeX";
+            NUD_SizeX.Size = new Size(58, 23);
+            NUD_SizeX.TabIndex = 17;
             // 
             // LABEL_Msg
             // 
-            this.LABEL_Msg.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.LABEL_Msg.ForeColor = System.Drawing.Color.Red;
-            this.LABEL_Msg.Location = new System.Drawing.Point(8, 71);
-            this.LABEL_Msg.Name = "LABEL_Msg";
-            this.LABEL_Msg.Size = new System.Drawing.Size(163, 277);
-            this.LABEL_Msg.TabIndex = 14;
+            LABEL_Msg.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            LABEL_Msg.ForeColor = Color.Red;
+            LABEL_Msg.Location = new Point(9, 101);
+            LABEL_Msg.Margin = new Padding(4, 0, 4, 0);
+            LABEL_Msg.Name = "LABEL_Msg";
+            LABEL_Msg.Size = new Size(190, 392);
+            LABEL_Msg.TabIndex = 14;
             // 
             // LINKLABEL_Inf
             // 
-            this.LINKLABEL_Inf.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.LINKLABEL_Inf.Location = new System.Drawing.Point(6, 371);
-            this.LINKLABEL_Inf.Name = "LINKLABEL_Inf";
-            this.LINKLABEL_Inf.Size = new System.Drawing.Size(165, 35);
-            this.LINKLABEL_Inf.TabIndex = 16;
-            this.LINKLABEL_Inf.TabStop = true;
-            this.LINKLABEL_Inf.Text = "https://www.cnblogs.com/fwindpeak/p/3822259.html";
-            this.LINKLABEL_Inf.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LINKLABEL_Inf_LinkClicked);
+            LINKLABEL_Inf.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            LINKLABEL_Inf.Location = new Point(7, 526);
+            LINKLABEL_Inf.Margin = new Padding(4, 0, 4, 0);
+            LINKLABEL_Inf.Name = "LINKLABEL_Inf";
+            LINKLABEL_Inf.Size = new Size(192, 50);
+            LINKLABEL_Inf.TabIndex = 16;
+            LINKLABEL_Inf.TabStop = true;
+            LINKLABEL_Inf.Text = "https://www.cnblogs.com/fwindpeak/p/3822259.html";
+            LINKLABEL_Inf.LinkClicked += LINKLABEL_Inf_LinkClicked;
             // 
             // LABEL_Inf
             // 
-            this.LABEL_Inf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.LABEL_Inf.Location = new System.Drawing.Point(8, 353);
-            this.LABEL_Inf.Name = "LABEL_Inf";
-            this.LABEL_Inf.Size = new System.Drawing.Size(163, 18);
-            this.LABEL_Inf.TabIndex = 15;
-            this.LABEL_Inf.Text = "C#的图片拼接 -  fwindpeak ";
+            LABEL_Inf.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            LABEL_Inf.Location = new Point(9, 500);
+            LABEL_Inf.Margin = new Padding(4, 0, 4, 0);
+            LABEL_Inf.Name = "LABEL_Inf";
+            LABEL_Inf.Size = new Size(190, 26);
+            LABEL_Inf.TabIndex = 15;
+            LABEL_Inf.Text = "C#的图片拼接 -  fwindpeak ";
             // 
             // BTN_Preview
             // 
-            this.BTN_Preview.Location = new System.Drawing.Point(32, 45);
-            this.BTN_Preview.Name = "BTN_Preview";
-            this.BTN_Preview.Size = new System.Drawing.Size(50, 23);
-            this.BTN_Preview.TabIndex = 12;
-            this.BTN_Preview.Text = "预览";
-            this.BTN_Preview.UseVisualStyleBackColor = true;
-            this.BTN_Preview.Click += new System.EventHandler(this.BTN_Preview_Click);
+            BTN_Preview.Location = new Point(37, 64);
+            BTN_Preview.Margin = new Padding(4);
+            BTN_Preview.Name = "BTN_Preview";
+            BTN_Preview.Size = new Size(58, 33);
+            BTN_Preview.TabIndex = 12;
+            BTN_Preview.Text = "预览";
+            BTN_Preview.UseVisualStyleBackColor = true;
+            BTN_Preview.Click += BTN_Preview_Click;
             // 
             // BTN_Save
             // 
-            this.BTN_Save.Location = new System.Drawing.Point(93, 45);
-            this.BTN_Save.Name = "BTN_Save";
-            this.BTN_Save.Size = new System.Drawing.Size(50, 23);
-            this.BTN_Save.TabIndex = 13;
-            this.BTN_Save.Text = "保存";
-            this.BTN_Save.UseVisualStyleBackColor = true;
-            this.BTN_Save.Click += new System.EventHandler(this.BTN_Save_Click);
-            // 
-            // TEXTBOX_SizeY
-            // 
-            this.TEXTBOX_SizeY.Location = new System.Drawing.Point(123, 18);
-            this.TEXTBOX_SizeY.MaxLength = 10;
-            this.TEXTBOX_SizeY.Name = "TEXTBOX_SizeY";
-            this.TEXTBOX_SizeY.Size = new System.Drawing.Size(50, 21);
-            this.TEXTBOX_SizeY.TabIndex = 11;
+            BTN_Save.Location = new Point(108, 64);
+            BTN_Save.Margin = new Padding(4);
+            BTN_Save.Name = "BTN_Save";
+            BTN_Save.Size = new Size(58, 33);
+            BTN_Save.TabIndex = 13;
+            BTN_Save.Text = "保存";
+            BTN_Save.UseVisualStyleBackColor = true;
+            BTN_Save.Click += BTN_Save_Click;
             // 
             // LABEL_X
             // 
-            this.LABEL_X.AutoSize = true;
-            this.LABEL_X.Location = new System.Drawing.Point(110, 21);
-            this.LABEL_X.Name = "LABEL_X";
-            this.LABEL_X.Size = new System.Drawing.Size(11, 12);
-            this.LABEL_X.TabIndex = 10;
-            this.LABEL_X.Text = "X";
+            LABEL_X.AutoSize = true;
+            LABEL_X.Location = new Point(124, 30);
+            LABEL_X.Margin = new Padding(4, 0, 4, 0);
+            LABEL_X.Name = "LABEL_X";
+            LABEL_X.Size = new Size(17, 17);
+            LABEL_X.TabIndex = 10;
+            LABEL_X.Text = "×";
             // 
             // LABEL_Size
             // 
-            this.LABEL_Size.AutoSize = true;
-            this.LABEL_Size.Location = new System.Drawing.Point(4, 21);
-            this.LABEL_Size.Name = "LABEL_Size";
-            this.LABEL_Size.Size = new System.Drawing.Size(53, 12);
-            this.LABEL_Size.TabIndex = 8;
-            this.LABEL_Size.Text = "画布尺寸";
-            // 
-            // TEXTBOX_SizeX
-            // 
-            this.TEXTBOX_SizeX.Location = new System.Drawing.Point(57, 18);
-            this.TEXTBOX_SizeX.MaxLength = 10;
-            this.TEXTBOX_SizeX.Name = "TEXTBOX_SizeX";
-            this.TEXTBOX_SizeX.Size = new System.Drawing.Size(50, 21);
-            this.TEXTBOX_SizeX.TabIndex = 9;
-            this.TEXTBOX_SizeX.Leave += new System.EventHandler(this.TEXTBOX_SizeX_Leave);
+            LABEL_Size.AutoSize = true;
+            LABEL_Size.Location = new Point(5, 30);
+            LABEL_Size.Margin = new Padding(4, 0, 4, 0);
+            LABEL_Size.Name = "LABEL_Size";
+            LABEL_Size.Size = new Size(56, 17);
+            LABEL_Size.TabIndex = 8;
+            LABEL_Size.Text = "画布尺寸";
             // 
             // GROUPBOX_SrcPic
             // 
-            this.GROUPBOX_SrcPic.Controls.Add(this.BTN_Clr);
-            this.GROUPBOX_SrcPic.Controls.Add(this.BTN_Del);
-            this.GROUPBOX_SrcPic.Controls.Add(this.BTN_Add);
-            this.GROUPBOX_SrcPic.Controls.Add(this.LISTVIEW_SrcPicList);
-            this.GROUPBOX_SrcPic.Dock = System.Windows.Forms.DockStyle.Left;
-            this.GROUPBOX_SrcPic.Location = new System.Drawing.Point(0, 0);
-            this.GROUPBOX_SrcPic.Name = "GROUPBOX_SrcPic";
-            this.GROUPBOX_SrcPic.Size = new System.Drawing.Size(149, 410);
-            this.GROUPBOX_SrcPic.TabIndex = 0;
-            this.GROUPBOX_SrcPic.TabStop = false;
-            this.GROUPBOX_SrcPic.Text = "原始图片";
+            GROUPBOX_SrcPic.Controls.Add(BTN_Clr);
+            GROUPBOX_SrcPic.Controls.Add(BTN_Del);
+            GROUPBOX_SrcPic.Controls.Add(BTN_Add);
+            GROUPBOX_SrcPic.Controls.Add(LISTVIEW_SrcPicList);
+            GROUPBOX_SrcPic.Dock = DockStyle.Left;
+            GROUPBOX_SrcPic.Location = new Point(0, 0);
+            GROUPBOX_SrcPic.Margin = new Padding(4);
+            GROUPBOX_SrcPic.Name = "GROUPBOX_SrcPic";
+            GROUPBOX_SrcPic.Padding = new Padding(4);
+            GROUPBOX_SrcPic.Size = new Size(174, 581);
+            GROUPBOX_SrcPic.TabIndex = 0;
+            GROUPBOX_SrcPic.TabStop = false;
+            GROUPBOX_SrcPic.Text = "原始图片";
             // 
             // BTN_Clr
             // 
-            this.BTN_Clr.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BTN_Clr.Location = new System.Drawing.Point(101, 381);
-            this.BTN_Clr.Name = "BTN_Clr";
-            this.BTN_Clr.Size = new System.Drawing.Size(41, 23);
-            this.BTN_Clr.TabIndex = 4;
-            this.BTN_Clr.Text = "清空";
-            this.BTN_Clr.UseVisualStyleBackColor = true;
-            this.BTN_Clr.Click += new System.EventHandler(this.BTN_Clr_Click);
+            BTN_Clr.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            BTN_Clr.Location = new Point(118, 540);
+            BTN_Clr.Margin = new Padding(4);
+            BTN_Clr.Name = "BTN_Clr";
+            BTN_Clr.Size = new Size(48, 33);
+            BTN_Clr.TabIndex = 4;
+            BTN_Clr.Text = "清空";
+            BTN_Clr.UseVisualStyleBackColor = true;
+            BTN_Clr.Click += BTN_Clr_Click;
             // 
             // BTN_Del
             // 
-            this.BTN_Del.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BTN_Del.Location = new System.Drawing.Point(54, 381);
-            this.BTN_Del.Name = "BTN_Del";
-            this.BTN_Del.Size = new System.Drawing.Size(41, 23);
-            this.BTN_Del.TabIndex = 3;
-            this.BTN_Del.Text = "删除";
-            this.BTN_Del.UseVisualStyleBackColor = true;
+            BTN_Del.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            BTN_Del.Location = new Point(63, 540);
+            BTN_Del.Margin = new Padding(4);
+            BTN_Del.Name = "BTN_Del";
+            BTN_Del.Size = new Size(48, 33);
+            BTN_Del.TabIndex = 3;
+            BTN_Del.Text = "删除";
+            BTN_Del.UseVisualStyleBackColor = true;
             // 
             // BTN_Add
             // 
-            this.BTN_Add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BTN_Add.Location = new System.Drawing.Point(7, 381);
-            this.BTN_Add.Name = "BTN_Add";
-            this.BTN_Add.Size = new System.Drawing.Size(41, 23);
-            this.BTN_Add.TabIndex = 2;
-            this.BTN_Add.Text = "添加";
-            this.BTN_Add.UseVisualStyleBackColor = true;
-            this.BTN_Add.Click += new System.EventHandler(this.BTN_Add_Click);
+            BTN_Add.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            BTN_Add.Location = new Point(8, 540);
+            BTN_Add.Margin = new Padding(4);
+            BTN_Add.Name = "BTN_Add";
+            BTN_Add.Size = new Size(48, 33);
+            BTN_Add.TabIndex = 2;
+            BTN_Add.Text = "添加";
+            BTN_Add.UseVisualStyleBackColor = true;
+            BTN_Add.Click += BTN_Add_Click;
             // 
             // LISTVIEW_SrcPicList
             // 
-            this.LISTVIEW_SrcPicList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.LISTVIEW_SrcPicList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.LISTVIEW_SrcPicList.HideSelection = false;
-            this.LISTVIEW_SrcPicList.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.LISTVIEW_SrcPicList.Location = new System.Drawing.Point(7, 17);
-            this.LISTVIEW_SrcPicList.Name = "LISTVIEW_SrcPicList";
-            this.LISTVIEW_SrcPicList.Size = new System.Drawing.Size(135, 358);
-            this.LISTVIEW_SrcPicList.TabIndex = 1;
-            this.LISTVIEW_SrcPicList.UseCompatibleStateImageBehavior = false;
+            LISTVIEW_SrcPicList.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            LISTVIEW_SrcPicList.HeaderStyle = ColumnHeaderStyle.None;
+            LISTVIEW_SrcPicList.ImeMode = ImeMode.NoControl;
+            LISTVIEW_SrcPicList.Location = new Point(8, 24);
+            LISTVIEW_SrcPicList.Margin = new Padding(4);
+            LISTVIEW_SrcPicList.Name = "LISTVIEW_SrcPicList";
+            LISTVIEW_SrcPicList.Size = new Size(157, 506);
+            LISTVIEW_SrcPicList.TabIndex = 1;
+            LISTVIEW_SrcPicList.UseCompatibleStateImageBehavior = false;
             // 
             // GROUPBOX_Preview
             // 
-            this.GROUPBOX_Preview.Controls.Add(this.panel1);
-            this.GROUPBOX_Preview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GROUPBOX_Preview.Location = new System.Drawing.Point(149, 0);
-            this.GROUPBOX_Preview.Name = "GROUPBOX_Preview";
-            this.GROUPBOX_Preview.Size = new System.Drawing.Size(572, 410);
-            this.GROUPBOX_Preview.TabIndex = 5;
-            this.GROUPBOX_Preview.TabStop = false;
-            this.GROUPBOX_Preview.Text = "拼接预览";
+            GROUPBOX_Preview.Controls.Add(panel1);
+            GROUPBOX_Preview.Dock = DockStyle.Fill;
+            GROUPBOX_Preview.Location = new Point(174, 0);
+            GROUPBOX_Preview.Margin = new Padding(4);
+            GROUPBOX_Preview.Name = "GROUPBOX_Preview";
+            GROUPBOX_Preview.Padding = new Padding(4);
+            GROUPBOX_Preview.Size = new Size(668, 581);
+            GROUPBOX_Preview.TabIndex = 5;
+            GROUPBOX_Preview.TabStop = false;
+            GROUPBOX_Preview.Text = "拼接预览";
             // 
             // panel1
             // 
-            this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 17);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(566, 390);
-            this.panel1.TabIndex = 6;
+            panel1.AutoScroll = true;
+            panel1.Controls.Add(pictureBox1);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(4, 20);
+            panel1.Margin = new Padding(4);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(660, 557);
+            panel1.TabIndex = 6;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(566, 390);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
-            // OpenFileDialog1
-            // 
-            this.OpenFileDialog1.Filter = "图片文件(*.bmp,*.jpg,*.png,*.gif）|*.bmp;*.jpg;*.png;*.gif|所有文件(*.*)|*.*";
-            this.OpenFileDialog1.Multiselect = true;
-            this.OpenFileDialog1.Title = "选择图片";
+            pictureBox1.BackColor = Color.White;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Margin = new Padding(4);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(0, 0);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(898, 410);
-            this.Controls.Add(this.GROUPBOX_Preview);
-            this.Controls.Add(this.GROUPBOX_SrcPic);
-            this.Controls.Add(this.GROUPBOX_Setting);
-            this.Name = "MainForm";
-            this.Text = "图片拼接";
-            this.Load += new System.EventHandler(this.MainForm_Load);
-            this.GROUPBOX_Setting.ResumeLayout(false);
-            this.GROUPBOX_Setting.PerformLayout();
-            this.GROUPBOX_SrcPic.ResumeLayout(false);
-            this.GROUPBOX_Preview.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1048, 581);
+            Controls.Add(GROUPBOX_Preview);
+            Controls.Add(GROUPBOX_SrcPic);
+            Controls.Add(GROUPBOX_Setting);
+            Margin = new Padding(4);
+            Name = "MainForm";
+            Text = "图片拼接";
+            Load += MainForm_Load;
+            GROUPBOX_Setting.ResumeLayout(false);
+            GROUPBOX_Setting.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)NUD_SizeY).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NUD_SizeX).EndInit();
+            GROUPBOX_SrcPic.ResumeLayout(false);
+            GROUPBOX_Preview.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
 
         private System.Windows.Forms.GroupBox GROUPBOX_Setting;
-        private System.Windows.Forms.TextBox TEXTBOX_SizeY;
         private System.Windows.Forms.Label LABEL_X;
         private System.Windows.Forms.Label LABEL_Size;
-        private System.Windows.Forms.TextBox TEXTBOX_SizeX;
         private System.Windows.Forms.GroupBox GROUPBOX_SrcPic;
         private System.Windows.Forms.Button BTN_Clr;
         private System.Windows.Forms.Button BTN_Del;
@@ -295,14 +301,14 @@
         private System.Windows.Forms.ListView LISTVIEW_SrcPicList;
         private System.Windows.Forms.GroupBox GROUPBOX_Preview;
         private System.Windows.Forms.Button BTN_Save;
-        private System.Windows.Forms.OpenFileDialog OpenFileDialog1;
-        private System.Windows.Forms.SaveFileDialog SaveFileDialog1;
         private System.Windows.Forms.Button BTN_Preview;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.LinkLabel LINKLABEL_Inf;
         private System.Windows.Forms.Label LABEL_Inf;
         private System.Windows.Forms.Label LABEL_Msg;
+        private NumericUpDown NUD_SizeY;
+        private NumericUpDown NUD_SizeX;
     }
 }
 
