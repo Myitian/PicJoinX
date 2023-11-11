@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace PicJoin
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         int pic_sizeX = 512, pic_sizeY = 512;
         ImageList imageList = new ImageList();
@@ -45,7 +45,7 @@ namespace PicJoin
             }
         }
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
